@@ -16,7 +16,7 @@ html, body {
     width: 380px;
     height: 350px;
     display: grid;
-    grid-template-columns:  1fr 1fr 1fr 1fr; 
+    grid-template-columns:  1fr 1fr 1fr 1.6fr; 
     grid-auto-rows: minmax(1fr, auto);
     column-gap: 8px;
     row-gap: 8px;
