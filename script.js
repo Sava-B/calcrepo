@@ -11,6 +11,16 @@ const divideBtn = document.getElementById('btn/');
 const equalBtn = document.getElementById('btn=');
 const clearBtn = document.getElementById('btnC');
 
+// let arr1 = [];
+// let arr2 = [];
+
+// const multiply = (array) => {
+//     var result = 1;
+//     for (var i=0; i<array.length; i++) {
+//         result = result * array[i];
+//     } 
+// }
+
 let arg1 = '0';
 let arg2 = '0';
 let result = 0;
