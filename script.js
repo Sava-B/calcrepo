@@ -11,22 +11,19 @@ const divideBtn = document.getElementById('btn/');
 const equalBtn = document.getElementById('btn=');
 const clearBtn = document.getElementById('btnC');
 
-// let arr1 = [];
-// let arr2 = [];
 
-// const multiply = (array) => {
-//     var result = 1;
-//     for (var i=0; i<array.length; i++) {
-//         result = result * array[i];
-//     } 
-// }
 
-let arg1 = '0';
-let arg2 = '0';
+let arr = [2,3];
 let result = 0;
 let doneFirstArg = 0;
-let operation = 0;
 
+
+const multiply = (array) => {
+    result = 1;
+    for (let i=0; i<array.length; i++) {
+        result = result * array[i];
+    } 
+}
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
