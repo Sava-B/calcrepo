@@ -1,7 +1,7 @@
 const body = document.body
 const container = document.querySelector('.container');
 const displayResult = document.querySelector('#result');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('[data-number]');
 
 // operation buttons
 const plusBtn = document.getElementById('btn+');
@@ -11,61 +11,60 @@ const divideBtn = document.getElementById('btn/');
 const equalBtn = document.getElementById('btn=');
 const clearBtn = document.getElementById('btnC');
 
-
-
-let arr = [2,3];
+let arg1 = 0;
+let arg2 = 0;
 let result = 0;
-let doneFirstArg = 0;
-
-
-const multiply = (array) => {
-    result = 1;
-    for (let i=0; i<array.length; i++) {
-        result = result * array[i];
-    } 
-}
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (doneFirstArg == 0) {
             arg1 += `${button.dataset.number}`;
-        } else {
-            arg2 += `${button.dataset.number}`;
-        }
+
+        
     })
 })
 
-const checkArg = () => { doneFirstArg = doneFirstArg == 0 ? 1: 0 };
-
 plusBtn.addEventListener('click', () => {
-    checkArg()
-    operation = 1;
+    displayResult.textContent = '+';
 });
+
 minusBtn.addEventListener('click', () => {
-    checkArg()
-    operation = 2;
+    displayResult.textContent = '-';
 });
 multipBtn.addEventListener('click', () => {
-    checkArg()
-    operation = 3;
+    displayResult.textContent = 'x';
 });
 divideBtn.addEventListener('click', () => {
-    checkArg()
-    operation = 4;
+    displayResult.textContent = '÷';
 });
+clearBtn.addEventListener('click', () => {
+    arg1 = 0;
+    arg2 = 0;
+    displayResult.textContent = 0;
+})
 
 // press equal and get result
 equalBtn.addEventListener('click', () => {
-    if (operation == 1) {
-        result = parseInt(arg1) + parseInt(arg2);
-    } else if (operation == 2) {
-        result = parseInt(arg1) - parseInt(arg2);
-    } else if (operation == 3) {
-        result = parseInt(arg1) * parseInt(arg2);
-    } else if (operation == 4) {
-        result = parseInt(arg1) / parseInt(arg2);
-    }
-    displayResult.textContent = result;
 })
 
-  
+class Stack {
+    constructor()
+    {
+        this.items = [];
+    }
+    push(arg1) 
+    {
+        this.items.push(arg1)
+    }
+    isEmpty()
+    {
+        return this.items.length = 0;
+    }
+    printStack()
+    {
+        var str = "";
+        for (var i = 0; i < this.items.length; i++)
+            str += this.items[i] + " ";
+        return str;
+    }
+
+}
