@@ -11,18 +11,9 @@ const divideBtn = document.getElementById('btn/');
 const equalBtn = document.getElementById('btn=');
 const clearBtn = document.getElementById('btnC');
 
-// let arr1 = [];
-// let arr2 = [];
 
-// const multiply = (array) => {
-//     var result = 1;
-//     for (var i=0; i<array.length; i++) {
-//         result = result * array[i];
-//     } 
-// }
-
-let arg1 = '0';
-let arg2 = '0';
+let arg1 = 0;
+let arg2 = 0;
 let result = 0;
 let doneFirstArg = 0;
 let operation = 0;
@@ -31,9 +22,13 @@ let operation = 0;
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (doneFirstArg == 0) {
-            arg1 += `${button.dataset.number}`;
+            arg1 += button.dataset.number;
+            displayResult.textContent = arg1;
+
         } else {
-            arg2 += `${button.dataset.number}`;
+            arg2 += button.dataset.number;
+            displayResult.textContent = arg2;
+
         }
     })
 })
@@ -43,32 +38,48 @@ const checkArg = () => { doneFirstArg = doneFirstArg == 0 ? 1: 0 };
 plusBtn.addEventListener('click', () => {
     checkArg()
     operation = 1;
+    displayResult.textContent = '+';
+
 });
 minusBtn.addEventListener('click', () => {
     checkArg()
     operation = 2;
+    displayResult.textContent = '-';
+
 });
 multipBtn.addEventListener('click', () => {
     checkArg()
     operation = 3;
+    displayResult.textContent = 'x';
+
 });
 divideBtn.addEventListener('click', () => {
     checkArg()
     operation = 4;
+    displayResult.textContent = '÷';
+
 });
+
+clearBtn.addEventListener('click', () => {
+    arg1 = 0;
+    arg2 = 0;
+    result = 0;
+    doneFirstArg = 0;
+    operation = 0;
+})
 
 // press equal and get result
 equalBtn.addEventListener('click', () => {
     if (operation == 1) {
-        result = parseInt(arg1) + parseInt(arg2);
+        result = arg1 + arg2;
     } else if (operation == 2) {
-        result = parseInt(arg1) - parseInt(arg2);
+        result = arg1 - arg2;
     } else if (operation == 3) {
-        result = parseInt(arg1) * parseInt(arg2);
+        result = arg1 * arg2;
     } else if (operation == 4) {
-        result = parseInt(arg1) / parseInt(arg2);
+        result = arg1 / arg2;
     }
-    displayResult.textContent = result;
+    displayResult.textContent = parseInt(result);
 })
 
-  
+   
