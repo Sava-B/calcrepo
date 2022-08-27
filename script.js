@@ -18,6 +18,7 @@ const multiply = (a,b) => { return parseInt(a) * parseInt(b) };
 const divide = (a,b) => { return parseInt(a) / parseInt(b) };
 
 const calculateNumbers = () => {
+    isArgEmpty();
     if (operation == 1) {
         displayValue += add(arg1, arg2);
     } else if (operation == 2){
@@ -26,13 +27,21 @@ const calculateNumbers = () => {
         displayValue += multiply(arg1, arg2);
     } else if (operation == 4) {
         displayValue += divide(arg1, arg2);
+        if (arg1 == 0 && arg2 == 0) {
+            displayValue = 'u = 5T00P1D L0L'
+        }
     }
+    roundAccurately(arg1, 5)
+}
+
+function roundAccurately(num, places) {
+    return parseFloat(Math.round(num + 'e' + places) + 'e-' + places);
 }
 
 let arg1 = '';
 let arg2 = '';
 let displayValue = '';
-let doneFirstArg = 0;
+let doneFirstArg = '';
 let doneFirstOp = 0;
 let operation = 0;
 
@@ -52,9 +61,17 @@ buttons.forEach((button) => {
     })
 })
 
-checkOp = () => {
+const checkOp = () => {
     if (doneFirstOp > 1) {
         doneFirstOp ++;
+    }
+}
+
+const isArgEmpty = () => {
+    if (arg1 == '') {
+        arg1 = 0
+    } else if (arg2 == '') {
+        arg2 = 0
     }
 }
 
@@ -121,7 +138,6 @@ equalBtn.addEventListener('click', () => {
     console.log(arg1, arg2, displayValue);
 })
 
-
 // Checks if more than 1 operation is done
 const newOp = () => {
     if (displayValue != '') {
@@ -130,16 +146,16 @@ const newOp = () => {
         doneFirstArg = 1;
         displayValue = '';
         console.log(arg1, arg2, displayValue);
-        displayValue.textContent = arg1;
-        displayResult.textContent = displayValue;
+        displayValue.textContent = roundAccurately(arg1,5);
+        displayResult.textContent = roundAccurately(displayValue,15);
 
-    } if (doneFirstOp > 1) {
+    } else if (doneFirstOp > 1) {
         calculateNumbers()
         arg1 = displayValue;
         arg2 = '';
         doneFirstArg = 0;
         displayValue = '';
-        displayResult.textContent = arg1;
+        displayResult.textContent = roundAccurately(arg1, 15);
         console.log(arg1, arg2, displayValue);   
     }
 }
